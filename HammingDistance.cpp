@@ -19,32 +19,40 @@ void printResult(berResults results);
 
 int main(int argc, char* argv[])
 {
-    std::string arg1;
-    std::string arg2;
+    
+    
     openLog("log.txt");
     if (argc == 3) {
-        arg1 = argv[1];
-        arg2 = argv[2];
+        std::string arg1 = argv[1];
+        std::string arg2 = argv[2];
         saveLog("Processing test files");
         berResults results = calculateBer(arg1, arg2);
         printResult(results);
     }
-    else if (argc == 2 && argv[2] == "generate") {
-        saveLog("Test files generation started");
-        createFile("file1_test1.bin", 100, 0x55);
-        saveLog("Created file: file1_test1.bin");
-        createFile("file2_test1.bin", 100, 0x55);
-        saveLog("Created file: file2_test1.bin"); 
-        createFile("file1_test2.bin", 100, 0x55);
-        saveLog("Created file: file1_test2.bin");
-        createFileWithRandomValues("file2_test2.bin", 100, 0x55);
-        saveLog("Created file: file2_test1.bin");
-        createFile("file1_test3.bin", 400000000, 0x55);
-        saveLog("Created file: file1_test3.bin");
-        createFile("file2_test3.bin", 400000000, 0x50);
-        saveLog("Created file: file2_test3.bin");
-        saveLog("File generation completed");
-        saveLog("Re-run program with proper arguments ie: ./HammingDistance.exe <test_file1> <test_file2>");
+    else if (argc == 2) {
+        std::string arg1 = argv[1];
+        if (arg1 == "generate") {
+            saveLog("Test files generation started");
+            createFile("file1_test1.bin", 100, 0x55);
+            saveLog("Created file: file1_test1.bin");
+            createFile("file2_test1.bin", 100, 0x55);
+            saveLog("Created file: file2_test1.bin");
+            createFile("file1_test2.bin", 100, 0x55);
+            saveLog("Created file: file1_test2.bin");
+            createFileWithRandomValues("file2_test2.bin", 100, 0x55);
+            saveLog("Created file: file2_test1.bin");
+            createFile("file1_test3.bin", 400000000, 0x55);
+            saveLog("Created file: file1_test3.bin");
+            createFile("file2_test3.bin", 400000000, 0x50);
+            saveLog("Created file: file2_test3.bin");
+            saveLog("File generation completed");
+            saveLog("Re-run program with proper arguments ie: ./HammingDistance.exe <test_file1> <test_file2>");
+        }
+        else {
+            saveLog("Critical: Arguments not specified.");
+            saveLog("Re-run program with proper arguments ie: ./HammingDistance.exe <test_file1> <test_file2>");
+            return 1;
+        }
     }
     else {
         saveLog("Critical: Arguments not specified.");
