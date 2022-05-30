@@ -24,8 +24,9 @@ int main(int argc, char* argv[])
     if (argc == 3) {
         arg1 = argv[1];
         arg2 = argv[2];
-        std::string logMessage = "Provided arguments: arg1<" + arg1 + "> arg2<" + arg2 + ">";
-        saveLog(logMessage);
+        saveLog("Processing test files");
+        berResults results = calculateBer(arg1, arg2);
+        printResult(results);
     }
     else if (argc == 2 && argv[2] == "generate") {
         saveLog("Test files generation started");
