@@ -9,6 +9,7 @@ struct berResults
     clock_t t2;
 };
 
+void createFile(const std::string name, const int count, const char value);
 int main(int argc, char* argv[])
 {
     std::string arg1;
@@ -26,4 +27,15 @@ int main(int argc, char* argv[])
         saveLog(logMessage);
     }
     return 0;
+}
+
+void createFile(const std::string name, const int count, const char value)
+{
+    std::fstream f;
+    f.open(name.c_str(), std::ios::binary | std::ios::out);
+    for (int i = 0; i < count; i++)
+    {
+        f.write((char*)&value, 1);
+    }
+    f.close();
 }
