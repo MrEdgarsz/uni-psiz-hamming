@@ -128,6 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="HammingDistance.cpp" />
+    <ClCompile Include="logger.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="export.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
