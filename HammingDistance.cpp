@@ -138,3 +138,14 @@ berResults calculateBer(std::string fpath1, std::string fpath2)
     saveLog("BER calculations are done");
     return results;
 }
+
+void printResult(berResults results)
+{
+    std::stringstream message;
+    message << "Results are: " << std::endl;
+    message << "BER: " << results.ber << std::endl;
+    message << "Tot: " << results.tot << std::endl;
+    message << "Err: " << results.err << std::endl;
+    message << "Calc time: " << ((float)results.t2 - results.t1) / CLOCKS_PER_SEC << " sec " << std::endl;
+    saveLog(message.str());
+}
